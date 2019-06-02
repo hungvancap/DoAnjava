@@ -70,6 +70,11 @@ public class FrameGiangVien extends javax.swing.JFrame {
         });
 
         jbt_input.setText("Nhập điểm");
+        jbt_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbt_inputActionPerformed(evt);
+            }
+        });
 
         jbt_logout.setText("Đăng xuất");
 
@@ -94,9 +99,9 @@ public class FrameGiangVien extends javax.swing.JFrame {
                 .addComponent(jbt_seen)
                 .addGap(44, 44, 44)
                 .addComponent(jbt_input)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jbt_thongke)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jbt_logout)
                 .addGap(59, 59, 59))
         );
@@ -127,6 +132,10 @@ public class FrameGiangVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jbt_seenActionPerformed
+
+    private void jbt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbt_inputActionPerformed
 
     /**
      * @param args the command line arguments
