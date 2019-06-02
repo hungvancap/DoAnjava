@@ -31,7 +31,7 @@ public class FrameGiangVien extends javax.swing.JFrame {
         Statement st=conn.createStatement();
         ResultSet rs=st.executeQuery(sql);
         lb_ma.setText(f.magv);
-        
+        lb_name.setText(rs.getString(1));
     }
 
     /**
@@ -45,13 +45,12 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lb_name = new javax.swing.JLabel();
-        lb_major = new javax.swing.JLabel();
         lb_ma = new javax.swing.JLabel();
         jbt_seen = new javax.swing.JButton();
         jbt_input = new javax.swing.JButton();
         jbt_logout = new javax.swing.JButton();
+        jbt_thongke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,19 +58,22 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
         jLabel3.setText("Mã giảng viên:");
 
-        jLabel4.setText("Khoa:");
-
         lb_name.setText("jLabel5");
-
-        lb_major.setText("jLabel5");
 
         lb_ma.setText("jLabel5");
 
         jbt_seen.setText("Xem điểm");
+        jbt_seen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbt_seenActionPerformed(evt);
+            }
+        });
 
         jbt_input.setText("Nhập điểm");
 
         jbt_logout.setText("Đăng xuất");
+
+        jbt_thongke.setText("Thống kê");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,25 +82,23 @@ public class FrameGiangVien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_major)
-                            .addComponent(lb_name)
-                            .addComponent(lb_ma))))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_name)
+                    .addComponent(lb_ma))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(21, 21, 21)
                 .addComponent(jbt_seen)
-                .addGap(80, 80, 80)
+                .addGap(44, 44, 44)
                 .addComponent(jbt_input)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jbt_thongke)
+                .addGap(37, 37, 37)
                 .addComponent(jbt_logout)
-                .addGap(72, 72, 72))
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,20 +111,22 @@ public class FrameGiangVien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lb_ma))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lb_major))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbt_seen)
                     .addComponent(jbt_input)
-                    .addComponent(jbt_logout))
-                .addGap(24, 24, 24))
+                    .addComponent(jbt_logout)
+                    .addComponent(jbt_thongke))
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbt_seenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_seenActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbt_seenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,12 +176,11 @@ public class FrameGiangVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbt_input;
     private javax.swing.JButton jbt_logout;
     private javax.swing.JButton jbt_seen;
+    private javax.swing.JButton jbt_thongke;
     private javax.swing.JLabel lb_ma;
-    private javax.swing.JLabel lb_major;
     private javax.swing.JLabel lb_name;
     // End of variables declaration//GEN-END:variables
 }
