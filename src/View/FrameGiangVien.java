@@ -135,6 +135,8 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
     private void jbt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_inputActionPerformed
         // TODO add your handling code here:
+                    NhapDiem dk = new NhapDiem();
+            dk.setVisible(true);
     }//GEN-LAST:event_jbt_inputActionPerformed
 
     /**

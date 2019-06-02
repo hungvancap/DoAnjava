@@ -5,6 +5,10 @@
  */
 package View;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Admin
@@ -60,6 +64,11 @@ public class NhapDiem extends javax.swing.JFrame {
         btMoF.setText("Mở file");
 
         btBack.setText("< Trở về");
+        btBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,6 +170,19 @@ public class NhapDiem extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtMaLop.setText("");
     }//GEN-LAST:event_txtMaLopMouseClicked
+
+    private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
+
+            // TODO add your handling code here:
+            
+            
+           
+           FrameGiangVien dk = new FrameGiangVien();
+            dk.setVisible(true);
+            
+
+        
+    }//GEN-LAST:event_btBackActionPerformed
 
     /**
      * @param args the command line arguments

@@ -129,6 +129,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&lt; Tr&#x1edf; v&#x1ec1;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBackActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
