@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -130,7 +132,9 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
     private void jbt_seenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_seenActionPerformed
         // TODO add your handling code here:
-        
+        JTextField textfiled=new JTextField();
+        String s="Xin mời nhập mã lớp !!!";
+        JOptionPane.showInputDialog(textfiled,"Xin mời nhập mã lớp!!!",null);
     }//GEN-LAST:event_jbt_seenActionPerformed
 
     private void jbt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_inputActionPerformed
