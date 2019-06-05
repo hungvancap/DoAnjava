@@ -5,9 +5,9 @@
         <group>
             <file>file:/D:/Documents/DoAn/src/Model/DBConnection.java</file>
             <file>file:/D:/Documents/DoAn/src/Main/DoAn.java</file>
+            <file>file:/D:/Documents/DoAn/src/View/NhapDiem.java</file>
             <file>file:/D:/Documents/DoAn/src/View/LoginForm.java</file>
             <file>file:/D:/Documents/DoAn/src/View/ConnectForm.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/FrameSinhVien.java</file>
             <file>file:/D:/Documents/DoAn/src/Controler/TaiKhoanController.java</file>
             <file>file:/D:/Documents/DoAn/src/View/FrameGiangVien.java</file>
         </group>
