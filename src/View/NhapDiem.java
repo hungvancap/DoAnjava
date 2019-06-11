@@ -43,7 +43,6 @@ public class NhapDiem extends javax.swing.JFrame {
         txtMaLop = new javax.swing.JTextField();
         btTim = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        lbTenSV = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -55,6 +54,9 @@ public class NhapDiem extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtC4 = new javax.swing.JTextField();
         txtC5 = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtMSSV = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,8 +154,6 @@ public class NhapDiem extends javax.swing.JFrame {
 
         jLabel2.setText("Tên sinh viên: ");
 
-        lbTenSV.setText("xxxxxxxxxxxx");
-
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Điểm"));
         jPanel3.setName("Điểm"); // NOI18N
 
@@ -212,6 +212,8 @@ public class NhapDiem extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
+        jLabel3.setText("MSSV:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,8 +229,12 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbTenSV, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -241,17 +247,17 @@ public class NhapDiem extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(lbTenSV))
+                            .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
-
-        jPanel3.getAccessibleContext().setAccessibleName("Điểm");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -317,6 +323,7 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JButton btTim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -326,13 +333,14 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbTenSV;
     private javax.swing.JTable tblDiem;
     private javax.swing.JTextField txtC1;
     private javax.swing.JTextField txtC2;
     private javax.swing.JTextField txtC3;
     private javax.swing.JTextField txtC4;
     private javax.swing.JTextField txtC5;
+    private javax.swing.JTextField txtMSSV;
     private javax.swing.JTextField txtMaLop;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

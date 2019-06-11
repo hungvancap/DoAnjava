@@ -52,7 +52,6 @@ public class FrameGiangVien extends javax.swing.JFrame {
         jbt_seen = new javax.swing.JButton();
         jbt_input = new javax.swing.JButton();
         jbt_logout = new javax.swing.JButton();
-        jbt_thongke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,8 +79,6 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
         jbt_logout.setText("Đăng xuất");
 
-        jbt_thongke.setText("Thống kê");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,9 +98,7 @@ public class FrameGiangVien extends javax.swing.JFrame {
                 .addComponent(jbt_seen)
                 .addGap(44, 44, 44)
                 .addComponent(jbt_input)
-                .addGap(33, 33, 33)
-                .addComponent(jbt_thongke)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(jbt_logout)
                 .addGap(59, 59, 59))
         );
@@ -122,8 +117,7 @@ public class FrameGiangVien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbt_seen)
                     .addComponent(jbt_input)
-                    .addComponent(jbt_logout)
-                    .addComponent(jbt_thongke))
+                    .addComponent(jbt_logout))
                 .addGap(29, 29, 29))
         );
 
@@ -194,7 +188,6 @@ public class FrameGiangVien extends javax.swing.JFrame {
     private javax.swing.JButton jbt_input;
     private javax.swing.JButton jbt_logout;
     private javax.swing.JButton jbt_seen;
-    private javax.swing.JButton jbt_thongke;
     private javax.swing.JLabel lb_ma;
     private javax.swing.JLabel lb_name;
     // End of variables declaration//GEN-END:variables

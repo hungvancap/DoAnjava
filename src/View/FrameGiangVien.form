@@ -41,9 +41,7 @@
               <Component id="jbt_seen" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="jbt_input" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="jbt_thongke" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace pref="157" max="32767" attributes="0"/>
               <Component id="jbt_logout" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
@@ -67,7 +65,6 @@
                   <Component id="jbt_seen" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbt_input" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbt_logout" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbt_thongke" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
@@ -114,11 +111,6 @@
     <Component class="javax.swing.JButton" name="jbt_logout">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbt_thongke">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
       </Properties>
     </Component>
   </SubComponents>
