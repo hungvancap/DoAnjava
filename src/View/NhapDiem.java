@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controler.User;
+import Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

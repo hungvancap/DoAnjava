@@ -9,7 +9,7 @@ package Controler;
  *
  * @author LENOVO
  */
-public class JTable_Search extends javax.swing.JFrame {
+public class JTable_Search  {
 
     /**
      * Creates new form JTable_Search
