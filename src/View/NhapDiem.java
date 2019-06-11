@@ -5,9 +5,16 @@
  */
 package View;
 
+import Controler.User;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,7 +74,7 @@ public class NhapDiem extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Kỳ KT", "Lớp", "MSSV", "Tên sinh viên", "Câu 1", "Câu 2", "Câu 3", "Câu 4", "Câu 5"
+                "Lớp", "MSSV", "Câu 1", "Câu 2", "Câu 3", "Câu 4", "Câu 5"
             }
         ));
         jScrollPane1.setViewportView(tblDiem);
@@ -126,6 +133,11 @@ public class NhapDiem extends javax.swing.JFrame {
         });
 
         btTim.setText("Tìm");
+        btTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Mã kỳ KT");
 
@@ -288,21 +300,103 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
 
-            // TODO add your handling code here:
-            
-            
-           
-           FrameGiangVien dk = new FrameGiangVien();
-            dk.setVisible(true);
-            
+        // TODO add your handling code here:
+//           FrameGiangVien dk = new FrameGiangVien();
+//            dk.setVisible(true);
 
-        
     }//GEN-LAST:event_btBackActionPerformed
 
     private void txtMaKTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaKTMouseClicked
         // TODO add your handling code here:
         txtMaKT.setText("");
     }//GEN-LAST:event_txtMaKTMouseClicked
+
+    public Connection getConnection() {
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/test_db", "root", "");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return con;
+    }
+
+    public ArrayList<User> ListUsers(String ValToSearch) {
+        ArrayList<User> usersList = new ArrayList<User>();
+
+        Statement st;
+        ResultSet rs;
+
+        try {
+            Connection con = getConnection();
+            st = con.createStatement();
+            switch (Integer.parseInt(txtMaKT.getText())) {
+                case 1:
+                    // code block
+                    String searchQuery1 = "SELECT * FROM `bangdiema1` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
+                    rs = st.executeQuery(searchQuery1);
+                    break;
+                case 2:
+                    // code block
+                    String searchQuery2 = "SELECT * FROM `bangdiema2` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
+                    rs = st.executeQuery(searchQuery2);
+                    break;
+                case 3:
+                    // code block
+                    String searchQuery3 = "SELECT * FROM `bangdiema3` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
+                    rs = st.executeQuery(searchQuery3);
+                    break;
+                default:
+                    // code block
+                    String searchQuery4 = "SELECT * FROM `bangdiema4` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
+                    rs = st.executeQuery(searchQuery4);
+            }
+
+            User user;
+
+            while (rs.next()) {
+                user = new User(
+                        rs.getString("mssv"),
+                        rs.getString("malop"),
+                        rs.getFloat("diemcau1"),
+                        rs.getFloat("diemcau2"),
+                        rs.getFloat("diemcau3"),
+                        rs.getFloat("diemcau4"),
+                        rs.getFloat("diemcau5")
+                );
+                usersList.add(user);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return usersList;
+    }
+    private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
+        // TODO add your handling code here:
+
+        ArrayList<User> users = ListUsers(txtMaLop.getText());
+        DefaultTableModel model = new DefaultTableModel();
+
+        Object[] row = new Object[4];
+
+        for (int i = 0; i < users.size(); i++) {
+            row[0] = users.get(i).getmssv();
+            row[1] = users.get(i).getmalop();
+            row[2] = users.get(i).getdiemcau1();
+            row[3] = users.get(i).getdiemcau2();
+            row[4] = users.get(i).getdiemcau3();
+            row[5] = users.get(i).getdiemcau4();
+            row[6] = users.get(i).getdiemcau5();
+            model.addRow(row);
+        }
+        tblDiem.setModel(model);
+
+
+    }//GEN-LAST:event_btTimActionPerformed
 
     /**
      * @param args the command line arguments

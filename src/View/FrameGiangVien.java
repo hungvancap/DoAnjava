@@ -23,15 +23,16 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
     /**
      * Creates new form GiangVien
+     *
      * @throws java.sql.SQLException
      */
     public FrameGiangVien() throws SQLException {
         initComponents();
-        LoginForm f=new LoginForm();
-        String sql="Select hotengv from giangvien where magv='"+f.magv+"'";
-        Connection conn=DBConnection.getConnection();
-        Statement st=conn.createStatement();
-        ResultSet rs=st.executeQuery(sql);
+        LoginForm f = new LoginForm();
+        String sql = "Select hotengv from giangvien where magv='" + f.magv + "'";
+        Connection conn = DBConnection.getConnection();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
         lb_ma.setText(f.magv);
         lb_name.setText(rs.getString(1));
     }
@@ -129,20 +130,17 @@ public class FrameGiangVien extends javax.swing.JFrame {
 //        JTextField textfiled=new JTextField();
 //        String s="Xin mời nhập mã lớp !!!";
 //        JOptionPane.showInputDialog(textfiled,"Xin mời nhập mã lớp!!!",null);
-                    NhapDiem dk = new NhapDiem();
-            dk.setVisible(true);
     }//GEN-LAST:event_jbt_seenActionPerformed
 
     private void jbt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_inputActionPerformed
         // TODO add your handling code here:
-                    NhapDiem dk = new NhapDiem();
-            dk.setVisible(true);
+        NhapDiem dk = new NhapDiem();
+        dk.setVisible(true);
     }//GEN-LAST:event_jbt_inputActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
