@@ -16,17 +16,20 @@ public class User {
     private float diemcau1;
     private float diemcau2;
     private float diemcau3;
-    private float diemcau4;
-    private float diemcau5;
+    private float tongdiema4;
 
-    public User(String mssv, String malop, float diemcau1, float diemcau2, float diemcau3, float diemcau4, float diemcau5) {
+    public User(String mssv, String malop, float diemcau1, float diemcau2, float diemcau3, float tongdiema4) {
         this.mssv = mssv;
         this.malop = malop;
         this.diemcau1 = diemcau1;
         this.diemcau2 = diemcau2;
         this.diemcau3 = diemcau3;
-        this.diemcau4 = diemcau4;
-        this.diemcau5 = diemcau5;
+        this.tongdiema4 = tongdiema4;
+
+    }
+
+    public User() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getmssv() {
@@ -49,11 +52,27 @@ public class User {
         return diemcau3;
     }
 
-    public float getdiemcau4() {
-        return diemcau4;
+    public float gettongdiema4() {
+        return tongdiema4;
+    }
+      public void setmssv(String ID) {
+        this.mssv = ID;
+    }
+        public void setmalop(String ID) {
+        this.malop = ID;
+    }
+          public void setc1(float ID) {
+        this.diemcau1 = ID;
+    }
+            public void setc2(float ID) {
+        this.diemcau2 = ID;
+    }
+              public void setc3(float ID) {
+        this.diemcau3 = ID;
+    }
+                public void seta(float ID) {
+        this.tongdiema4 = ID;
     }
 
-    public float getdiemcau5() {
-        return diemcau5;
-    }
+
 }

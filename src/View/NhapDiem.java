@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controler.JTable_Search;
 import Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -59,10 +61,8 @@ public class NhapDiem extends javax.swing.JFrame {
         txtC1 = new javax.swing.JTextField();
         txtC2 = new javax.swing.JTextField();
         txtC3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtC4 = new javax.swing.JTextField();
-        txtC5 = new javax.swing.JTextField();
+        txtA = new javax.swing.JTextField();
         txtTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtMSSV = new javax.swing.JTextField();
@@ -74,14 +74,24 @@ public class NhapDiem extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Lớp", "MSSV", "Câu 1", "Câu 2", "Câu 3", "Câu 4", "Câu 5"
+                "MSSV", "Lớp", "Câu 1", "Câu 2", "Câu 3", "Tổng điểm A"
             }
         ));
+        tblDiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDiemMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDiem);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         btLuu.setText("Lưu vào CSDL");
+        btLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLuuActionPerformed(evt);
+            }
+        });
 
         btLuuF.setText("Lưu file");
 
@@ -194,20 +204,18 @@ public class NhapDiem extends javax.swing.JFrame {
 
         jLabel6.setText("Câu 3 ");
 
-        jLabel7.setText("Câu 4 ");
-
-        jLabel8.setText("Câu 5 ");
+        jLabel8.setText("Tổng Điểm A:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(49, 49, 49)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtC1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(84, 84, 84)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtC2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,15 +223,11 @@ public class NhapDiem extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtC3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtC4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtC5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,10 +240,8 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(txtC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtC3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(txtC4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtC5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -254,9 +256,9 @@ public class NhapDiem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -332,41 +334,26 @@ public class NhapDiem extends javax.swing.JFrame {
         try {
             Connection con = getConnection();
             st = con.createStatement();
-            switch (Integer.parseInt(txtMaKT.getText())) {
-                case 1:
-                    // code block
-                    String searchQuery1 = "SELECT * FROM `bangdiema1` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
-                    rs = st.executeQuery(searchQuery1);
-                    break;
-                case 2:
-                    // code block
-                    String searchQuery2 = "SELECT * FROM `bangdiema2` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
-                    rs = st.executeQuery(searchQuery2);
-                    break;
-                case 3:
-                    // code block
-                    String searchQuery3 = "SELECT * FROM `bangdiema3` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
-                    rs = st.executeQuery(searchQuery3);
-                    break;
-                default:
-                    // code block
-                    String searchQuery4 = "SELECT * FROM `bangdiema4` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
-                    rs = st.executeQuery(searchQuery4);
-            }
+
+                    String searchQuery = "SELECT * FROM `bangdiema"+txtMaKT.getText()+"` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
+                    rs = st.executeQuery(searchQuery);
+
 
             User user;
 
             while (rs.next()) {
-                user = new User(
+    
+                user = new User(                      
                         rs.getString("mssv"),
                         rs.getString("malop"),
                         rs.getFloat("diemcau1"),
                         rs.getFloat("diemcau2"),
                         rs.getFloat("diemcau3"),
-                        rs.getFloat("diemcau4"),
-                        rs.getFloat("diemcau5")
+                        rs.getFloat("tongdiema"+txtMaKT.getText())     
                 );
                 usersList.add(user);
+            
+
             }
 
         } catch (Exception ex) {
@@ -389,14 +376,41 @@ public class NhapDiem extends javax.swing.JFrame {
             row[2] = users.get(i).getdiemcau1();
             row[3] = users.get(i).getdiemcau2();
             row[4] = users.get(i).getdiemcau3();
-            row[5] = users.get(i).getdiemcau4();
-            row[6] = users.get(i).getdiemcau5();
+            row[5] = users.get(i).gettongdiema4();
             model.addRow(row);
+
         }
         tblDiem.setModel(model);
 
+  
 
     }//GEN-LAST:event_btTimActionPerformed
+
+    private void tblDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiemMouseClicked
+        // TODO add your handling code here:
+                int selectedRow=tblDiem.getSelectedRow();
+        DefaultTableModel model=(DefaultTableModel)tblDiem.getModel();
+        txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
+        txtTen.setText(model.getValueAt(selectedRow, 1).toString());
+        txtC1.setText(model.getValueAt(selectedRow, 2).toString());
+        txtC2.setText(model.getValueAt(selectedRow, 3).toString());
+        txtC3.setText(model.getValueAt(selectedRow, 4).toString());
+        txtA.setText(model.getValueAt(selectedRow, 5).toString());
+    }//GEN-LAST:event_tblDiemMouseClicked
+
+    private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
+        // TODO add your handling code here:
+                User s = new User();
+        s.setmssv((txtMSSV.getText()));
+        s.setmalop(txtTen.getText());
+        s.setc1(Float.parseFloat(txtC1.getText()));
+        s.setc2(Float.parseFloat(txtC2.getText()));
+        s.setc3(Float.parseFloat(txtC3.getText()));
+        s.seta(Float.parseFloat(txtA.getText()));
+                if(new JTable_Search().add(s)){
+            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên "+(txtMSSV.getText())+" thành công");
+                }
+    }//GEN-LAST:event_btLuuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,7 +459,6 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -453,11 +466,10 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDiem;
+    private javax.swing.JTextField txtA;
     private javax.swing.JTextField txtC1;
     private javax.swing.JTextField txtC2;
     private javax.swing.JTextField txtC3;
-    private javax.swing.JTextField txtC4;
-    private javax.swing.JTextField txtC5;
     private javax.swing.JTextField txtMSSV;
     private javax.swing.JTextField txtMaKT;
     private javax.swing.JTextField txtMaLop;

@@ -29,9 +29,9 @@
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" pref="664" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="673" max="32767" attributes="0"/>
                   <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -86,17 +86,19 @@
         <Component class="javax.swing.JTable" name="tblDiem">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
-                <Column editable="true" title="L&#x1edb;p" type="java.lang.Object"/>
+              <Table columnCount="6" rowCount="0">
                 <Column editable="true" title="MSSV" type="java.lang.Object"/>
+                <Column editable="true" title="L&#x1edb;p" type="java.lang.Object"/>
                 <Column editable="true" title="C&#xe2;u 1" type="java.lang.Object"/>
                 <Column editable="true" title="C&#xe2;u 2" type="java.lang.Object"/>
                 <Column editable="true" title="C&#xe2;u 3" type="java.lang.Object"/>
-                <Column editable="true" title="C&#xe2;u 4" type="java.lang.Object"/>
-                <Column editable="true" title="C&#xe2;u 5" type="java.lang.Object"/>
+                <Column editable="true" title="T&#x1ed5;ng &#x111;i&#x1ec3;m A" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblDiemMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -145,6 +147,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="L&#x1b0;u v&#xe0;o CSDL"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLuuActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btLuuF">
           <Properties>
@@ -274,11 +279,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtC1" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtC2" min="-2" pref="35" max="-2" attributes="0"/>
@@ -286,15 +291,11 @@
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtC3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtC4" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtC5" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtA" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -309,10 +310,8 @@
                       <Component id="txtC1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtC2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtC3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtC4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtC5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtA" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
@@ -341,19 +340,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtC3">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xe2;u 4 "/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xe2;u 5 "/>
+            <Property name="text" type="java.lang.String" value="T&#x1ed5;ng &#x110;i&#x1ec3;m A:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtC4">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtC5">
+        <Component class="javax.swing.JTextField" name="txtA">
         </Component>
       </SubComponents>
     </Container>
