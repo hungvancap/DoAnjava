@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,6 +21,7 @@ public class JTable_Search  {
     /**
      * Creates new form JTable_Search
      */
+    
     private Connection conn;
 //    public JTable_Search() {
 //        initComponents();
@@ -28,9 +30,37 @@ public class JTable_Search  {
 //        findUsers();
 //        
 //    }
+//     public static Connection getMySQLConnection() throws SQLException,
+//         ClassNotFoundException {
+//     String hostName = "localhost";
+// 
+//     String dbName = "new_schema";
+//     String userName = "root";
+//     String password = "12345";
+// 
+//     return getMySQLConnection(hostName, dbName, userName, password);
+// }
+// 
+// public static Connection getMySQLConnection(String hostName, String dbName,
+//         String userName, String password) throws SQLException,
+//         ClassNotFoundException {
+//     // Khai báo class Driver cho DB MySQL
+//     // Việc này cần thiết với Java 5
+//     // Java6 tự động tìm kiếm Driver thích hợp.
+//     // Nếu bạn dùng Java6, thì ko cần dòng này cũng được.
+//     Class.forName("com.mysql.jdbc.Driver");
+// 
+//     // Cấu trúc URL Connection dành cho Oracle
+//     // Ví dụ: jdbc:mysql://localhost:3306/simplehr
+//     String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
+// 
+//     Connection conn = DriverManager.getConnection(connectionURL, userName,
+//             password);
+//     return conn;
+// }
     public boolean add(User s){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/test_db", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

@@ -17,6 +17,7 @@ public class User {
     private float diemcau2;
     private float diemcau3;
     private float tongdiema4;
+    private float tongdiema3;
 
     public User(String mssv, String malop, float diemcau1, float diemcau2, float diemcau3, float tongdiema4) {
         this.mssv = mssv;
@@ -28,9 +29,16 @@ public class User {
 
     }
 
-    public User() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User(String mssv, String malop, float tongdiema3) {
+         //To change body of generated methods, choose Tools | Templates.
+        this.mssv = mssv;
+        this.malop = malop;
+        this.tongdiema4 = tongdiema4;
     }
+
+//    public User() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     public String getmssv() {
         return mssv;
@@ -54,6 +62,9 @@ public class User {
 
     public float gettongdiema4() {
         return tongdiema4;
+    }
+        public float gettongdiema3() {
+        return tongdiema3;
     }
       public void setmssv(String ID) {
         this.mssv = ID;

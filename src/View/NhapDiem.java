@@ -317,7 +317,7 @@ public class NhapDiem extends javax.swing.JFrame {
         Connection con = null;
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/test_db", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -335,25 +335,37 @@ public class NhapDiem extends javax.swing.JFrame {
             Connection con = getConnection();
             st = con.createStatement();
 
-                    String searchQuery = "SELECT * FROM `bangdiema"+txtMaKT.getText()+"` WHERE CONCAT(`malop`) LIKE '%" + ValToSearch + "%'";
-                    rs = st.executeQuery(searchQuery);
-
+            String searchQuery = "SELECT * FROM `bangdiema" + txtMaKT.getText() + "` WHERE malop = '" + ValToSearch + "'";
+            rs = st.executeQuery(searchQuery);
 
             User user;
+            if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
+                while (rs.next()) {
 
-            while (rs.next()) {
-    
-                user = new User(                      
-                        rs.getString("mssv"),
-                        rs.getString("malop"),
-                        rs.getFloat("diemcau1"),
-                        rs.getFloat("diemcau2"),
-                        rs.getFloat("diemcau3"),
-                        rs.getFloat("tongdiema"+txtMaKT.getText())     
-                );
-                usersList.add(user);
-            
+                    user = new User(
+                            rs.getString("mssv"),
+                            rs.getString("malop"),
+                            rs.getFloat("diemcau1"),
+                            rs.getFloat("diemcau2"),
+                            rs.getFloat("diemcau3"),
+                            rs.getFloat("tongdiema" + txtMaKT.getText())
+                    );
+                    usersList.add(user);
 
+                }
+            }
+                 else{
+                while (rs.next()) {
+
+                    user = new User(
+                            rs.getString("mssv"),
+                            rs.getString("malop"),
+
+                            rs.getFloat("tongdiema" + txtMaKT.getText())
+                    );
+                    usersList.add(user);
+
+                }
             }
 
         } catch (Exception ex) {
@@ -367,8 +379,9 @@ public class NhapDiem extends javax.swing.JFrame {
 
         ArrayList<User> users = ListUsers(txtMaLop.getText());
         DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "C1", "C2", "C3", "Tổng điểm A"});
 
-        Object[] row = new Object[4];
+        Object[] row = new Object[6];
 
         for (int i = 0; i < users.size(); i++) {
             row[0] = users.get(i).getmssv();
@@ -382,14 +395,13 @@ public class NhapDiem extends javax.swing.JFrame {
         }
         tblDiem.setModel(model);
 
-  
 
     }//GEN-LAST:event_btTimActionPerformed
 
     private void tblDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiemMouseClicked
         // TODO add your handling code here:
-                int selectedRow=tblDiem.getSelectedRow();
-        DefaultTableModel model=(DefaultTableModel)tblDiem.getModel();
+        int selectedRow = tblDiem.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblDiem.getModel();
         txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
         txtTen.setText(model.getValueAt(selectedRow, 1).toString());
         txtC1.setText(model.getValueAt(selectedRow, 2).toString());
@@ -400,16 +412,16 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
         // TODO add your handling code here:
-                User s = new User();
+        User s = new User();
         s.setmssv((txtMSSV.getText()));
         s.setmalop(txtTen.getText());
         s.setc1(Float.parseFloat(txtC1.getText()));
         s.setc2(Float.parseFloat(txtC2.getText()));
         s.setc3(Float.parseFloat(txtC3.getText()));
         s.seta(Float.parseFloat(txtA.getText()));
-                if(new JTable_Search().add(s)){
-            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên "+(txtMSSV.getText())+" thành công");
-                }
+        if (new JTable_Search().add(s)) {
+            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên " + (txtMSSV.getText()) + " thành công");
+        }
     }//GEN-LAST:event_btLuuActionPerformed
 
     /**
