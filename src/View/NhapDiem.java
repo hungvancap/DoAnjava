@@ -6,6 +6,8 @@
 package View;
 
 import Controler.JTable_Search;
+import Controler.LuuFIleController;
+import Model.DBConnection;
 import Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -94,6 +97,11 @@ public class NhapDiem extends javax.swing.JFrame {
         });
 
         btLuuF.setText("Lưu file");
+        btLuuF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLuuFActionPerformed(evt);
+            }
+        });
 
         btMoF.setText("Mở file");
 
@@ -317,7 +325,7 @@ public class NhapDiem extends javax.swing.JFrame {
         Connection con = null;
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
+            con=DBConnection.getConnection();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -412,17 +420,22 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
         // TODO add your handling code here:
-        User s = new User();
-        s.setmssv((txtMSSV.getText()));
-        s.setmalop(txtTen.getText());
-        s.setc1(Float.parseFloat(txtC1.getText()));
-        s.setc2(Float.parseFloat(txtC2.getText()));
-        s.setc3(Float.parseFloat(txtC3.getText()));
-        s.seta(Float.parseFloat(txtA.getText()));
-        if (new JTable_Search().add(s)) {
-            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên " + (txtMSSV.getText()) + " thành công");
-        }
+//        User s = new User();
+//        s.setmssv((txtMSSV.getText()));
+//        s.setmalop(txtTen.getText());
+//        s.setc1(Float.parseFloat(txtC1.getText()));
+//        s.setc2(Float.parseFloat(txtC2.getText()));
+//        s.setc3(Float.parseFloat(txtC3.getText()));
+//        s.seta(Float.parseFloat(txtA.getText()));
+//        if (new JTable_Search().add(s)) {
+//            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên " + (txtMSSV.getText()) + " thành công");
+//        }
     }//GEN-LAST:event_btLuuActionPerformed
+
+    private void btLuuFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuFActionPerformed
+        // TODO add your handling code here:
+        LuuFIleController controller=new LuuFIleController();
+    }//GEN-LAST:event_btLuuFActionPerformed
 
     /**
      * @param args the command line arguments

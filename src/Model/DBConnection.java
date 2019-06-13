@@ -14,7 +14,7 @@ public class DBConnection {
         try {
             Connection cons = null;
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cons = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_schema","root","12345");
+            cons = DriverManager.getConnection("jdbc:mysql://localhost:3307/doanjava","root","11111999");
             
 //            cons = DriverManager.getConnection("jdbc:mysql://localhost:3306/doanjava", "root", "thuan920");
             return cons;
