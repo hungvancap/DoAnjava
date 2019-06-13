@@ -5,6 +5,7 @@
  */
 package Controler;
 
+import Model.DBConnection;
 import Model.User;
 import java.sql.Connection;
 import java.sql.Date;
@@ -60,7 +61,7 @@ public class JTable_Search  {
 // }
     public boolean add(User s){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
+            conn = DBConnection.getConnection();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

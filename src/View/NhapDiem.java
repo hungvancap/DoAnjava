@@ -33,7 +33,27 @@ public class NhapDiem extends javax.swing.JFrame {
     public String magv;
     public NhapDiem(String magv) {
         initComponents();
-        this.magv=magv;
+        try {
+            
+            this.magv=magv;
+            Connection conn=DBConnection.getConnection();
+            Statement stm=conn.createStatement();
+            String sql1="select * from lophoc where magv='"+magv+"'";
+            ResultSet rs1=stm.executeQuery(sql1);
+            while (rs1.next()) {                
+                cblop.addItem(rs1.getString("malophoc"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private NhapDiem() {
+        
+            initComponents();
+            
+           
+                    
     }
 
     /**
@@ -54,10 +74,10 @@ public class NhapDiem extends javax.swing.JFrame {
         btBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtMaLop = new javax.swing.JTextField();
         btTim = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtMaKT = new javax.swing.JTextField();
+        cblop = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -143,13 +163,6 @@ public class NhapDiem extends javax.swing.JFrame {
 
         jLabel1.setText("Lớp: ");
 
-        txtMaLop.setText("Nhập mã lớp");
-        txtMaLop.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMaLopMouseClicked(evt);
-            }
-        });
-
         btTim.setText("Tìm");
         btTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +190,8 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaLop)
-                    .addComponent(txtMaKT))
+                    .addComponent(txtMaKT, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(cblop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -188,10 +201,10 @@ public class NhapDiem extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(cblop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,11 +309,6 @@ public class NhapDiem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMaLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaLopMouseClicked
-        // TODO add your handling code here:
-        txtMaLop.setText("");
-    }//GEN-LAST:event_txtMaLopMouseClicked
-
     private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
 
         // TODO add your handling code here:
@@ -378,7 +386,7 @@ public class NhapDiem extends javax.swing.JFrame {
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
         // TODO add your handling code here:
 
-        ArrayList<User> users = ListUsers(txtMaLop.getText());
+        ArrayList<User> users = ListUsers(cblop.getItemAt(1));
         DefaultTableModel model = new DefaultTableModel();
         if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
         model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "C1", "C2", "C3", "Tổng điểm A"});
@@ -499,6 +507,7 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JButton btLuuF;
     private javax.swing.JButton btMoF;
     private javax.swing.JButton btTim;
+    private javax.swing.JComboBox<String> cblop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -517,6 +526,5 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JTextField txtC3;
     private javax.swing.JTextField txtMSSV;
     private javax.swing.JTextField txtMaKT;
-    private javax.swing.JTextField txtMaLop;
     // End of variables declaration//GEN-END:variables
 }
