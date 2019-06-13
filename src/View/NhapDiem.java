@@ -30,8 +30,10 @@ public class NhapDiem extends javax.swing.JFrame {
     /**
      * Creates new form NhapDiem
      */
-    public NhapDiem() {
+    public String magv;
+    public NhapDiem(String magv) {
         initComponents();
+        this.magv=magv;
     }
 
     /**
@@ -56,7 +58,6 @@ public class NhapDiem extends javax.swing.JFrame {
         btTim = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtMaKT = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -66,7 +67,6 @@ public class NhapDiem extends javax.swing.JFrame {
         txtC3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtA = new javax.swing.JTextField();
-        txtTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtMSSV = new javax.swing.JTextField();
 
@@ -201,8 +201,6 @@ public class NhapDiem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Tên sinh viên: ");
-
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Điểm"));
         jPanel3.setName("Điểm"); // NOI18N
 
@@ -265,17 +263,14 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -287,8 +282,6 @@ public class NhapDiem extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -387,10 +380,11 @@ public class NhapDiem extends javax.swing.JFrame {
 
         ArrayList<User> users = ListUsers(txtMaLop.getText());
         DefaultTableModel model = new DefaultTableModel();
+        if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
         model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "C1", "C2", "C3", "Tổng điểm A"});
-
+        
         Object[] row = new Object[6];
-
+        
         for (int i = 0; i < users.size(); i++) {
             row[0] = users.get(i).getmssv();
             row[1] = users.get(i).getmalop();
@@ -401,6 +395,23 @@ public class NhapDiem extends javax.swing.JFrame {
             model.addRow(row);
 
         }
+        }
+        else
+        {
+                    model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "Tổng điểm A"});
+        
+        Object[] row = new Object[3];
+        
+        for (int i = 0; i < users.size(); i++) {
+            row[0] = users.get(i).getmssv();
+            row[1] = users.get(i).getmalop();
+
+            row[2] = users.get(i).gettongdiema3();
+            model.addRow(row);
+
+        }
+        }
+        
         tblDiem.setModel(model);
 
 
@@ -410,12 +421,22 @@ public class NhapDiem extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblDiem.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblDiem.getModel();
+        if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
         txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
-        txtTen.setText(model.getValueAt(selectedRow, 1).toString());
         txtC1.setText(model.getValueAt(selectedRow, 2).toString());
         txtC2.setText(model.getValueAt(selectedRow, 3).toString());
         txtC3.setText(model.getValueAt(selectedRow, 4).toString());
         txtA.setText(model.getValueAt(selectedRow, 5).toString());
+        }
+        else
+        {
+        txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
+        txtC1.setText("NULL");
+        txtC2.setText("NULL");
+        txtC3.setText("NULL");
+ 
+        txtA.setText(model.getValueAt(selectedRow, 2).toString());
+        }
     }//GEN-LAST:event_tblDiemMouseClicked
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
@@ -479,7 +500,6 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JButton btMoF;
     private javax.swing.JButton btTim;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -498,6 +518,5 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JTextField txtMSSV;
     private javax.swing.JTextField txtMaKT;
     private javax.swing.JTextField txtMaLop;
-    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

@@ -180,7 +180,7 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
     private void jbtnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhapActionPerformed
         // TODO add your handling code here:
-        NhapDiem dk = new NhapDiem();
+        NhapDiem dk = new NhapDiem(magv);
         dk.setVisible(true);
         dk.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtnhapActionPerformed
