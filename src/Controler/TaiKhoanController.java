@@ -2,8 +2,8 @@ package Controler;
 
 import Model.DBConnection;
 import View.FrameGiangVien;
-import View.FrameSinhVien;
 import View.LoginForm;
+import View.FrameSinhVien;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -52,14 +52,16 @@ public class TaiKhoanController {
 //                        String pass = new String();
                         if (rs1.next()) {
                             String name=rs1.getString("hotengv");
-                            FrameGiangVien jfGiangVien = new FrameGiangVien();
+                            String ma=rs1.getString("magv");
+                            FrameGiangVien jfGiangVien = new FrameGiangVien(name,ma);
                             jfGiangVien.setLocationRelativeTo(null);
                             jfGiangVien.setVisible(true);
                             dialog.dispose();
 
                         } else if (rs2.next()) {
                             String name=rs2.getString("hotensv");
-                            FrameSinhVien jfSinhVien = new FrameSinhVien();
+                            String mssv = rs2.getString("mssv");
+                            FrameSinhVien jfSinhVien = new FrameSinhVien(mssv);
                             jfSinhVien.setLocationRelativeTo(null);
                             jfSinhVien.setVisible(true);
                             dialog.dispose();
