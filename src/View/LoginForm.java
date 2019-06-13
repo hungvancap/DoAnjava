@@ -19,8 +19,6 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         TaiKhoanController controller= new TaiKhoanController(this, jbtSubmit, jtfTenDangNhap, jtfMatKhau, jlbMsg);
         controller.setEvent();
-        
-        
     }
 
     /**
@@ -234,8 +232,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelMinMouseClicked
 
     private void jbtSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSubmitActionPerformed
-        magv = jtfTenDangNhap.getText();
-         
+        magv=jtfTenDangNhap.getText();
     }//GEN-LAST:event_jbtSubmitActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
