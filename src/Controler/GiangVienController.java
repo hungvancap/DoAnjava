@@ -9,7 +9,7 @@ import Model.DBConnection;
 import View.Bangdiemlophoc;
 import View.Bangdiemlopsinhhoat;
 import View.FrameGiangVien;
-import View.bieudo;
+//import View.bieudo;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -159,7 +159,7 @@ public class GiangVienController {
                     rs3.close();
                     jpnView.removeAll();
                     jpnView.setLayout(new BorderLayout());
-                    jpnView.add(new bieudo());
+//                    jpnView.add(new bieudo());
                 } catch (SQLException ex) {
                     Logger.getLogger(GiangVienController.class.getName()).log(Level.SEVERE, null, ex);
                 }

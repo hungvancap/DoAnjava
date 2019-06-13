@@ -4,20 +4,34 @@
  * and open the template in the editor.
  */
 package View;
-
+import org.jfree.*;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 /**
  *
  * @author Admin
  */
-public class bieudo extends javax.swing.JPanel {
-
+public class Bieudo extends javax.swing.JPanel {
+    float [] tile;
     /**
-     * Creates new form bieudo
+     * Creates new form Bieudo
      */
-    public bieudo() {
+    public Bieudo() {
         initComponents();
+        
+        
     }
-
+//    public static JFreeChart createChart(){
+//        JFreeChart barchart=ChartFactory.createBarChart("Biểu đồ chuẩn đầu ra của môn","Các chuẩn","%", dataset);
+//        return barchart;
+//    }
+//    public static CategoryDataset createDataset(float [] tile){
+//        final DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+//        dataset.a
+//        return dataset;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,30 +41,19 @@ public class bieudo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(118, 118, 118))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jButton1)
-                .addContainerGap(193, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

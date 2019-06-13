@@ -61,7 +61,7 @@ public class TaiKhoanController {
                         } else if (rs2.next()) {
                             String name=rs2.getString("hotensv");
                             String mssv = rs2.getString("mssv");
-                            FrameSinhVien jfSinhVien = new FrameSinhVien(mssv);
+                            FrameSinhVien jfSinhVien = new FrameSinhVien(name,mssv);
                             jfSinhVien.setLocationRelativeTo(null);
                             jfSinhVien.setVisible(true);
                             dialog.dispose();
