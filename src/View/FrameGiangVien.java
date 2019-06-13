@@ -87,6 +87,11 @@ public class FrameGiangVien extends javax.swing.JFrame {
 
         jbtout.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jbtout.setText("Đăng xuất");
+        jbtout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtoutActionPerformed(evt);
+            }
+        });
 
         jbtThongke.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jbtThongke.setText("Thống kê");
@@ -179,6 +184,13 @@ public class FrameGiangVien extends javax.swing.JFrame {
         dk.setVisible(true);
         dk.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtnhapActionPerformed
+
+    private void jbtoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        LoginForm lg=new LoginForm();
+        lg.setVisible(true);
+    }//GEN-LAST:event_jbtoutActionPerformed
 
     /**
      * @param args the command line arguments
