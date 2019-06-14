@@ -317,7 +317,7 @@ public class NhapDiem extends javax.swing.JFrame {
         Connection con = null;
 
         try {
-             con = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
+             con = DBConnection.getConnection();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
