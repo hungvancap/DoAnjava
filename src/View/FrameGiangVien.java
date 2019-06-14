@@ -20,7 +20,7 @@ public class FrameGiangVien extends javax.swing.JFrame {
     public FrameGiangVien() {
         initComponents();
     }
-    public String magv;
+    public String magv; 
     public FrameGiangVien(String name,String ma) throws HeadlessException {
         initComponents();
         magv=ma;

@@ -5,13 +5,12 @@
  */
 package View;
 
-import Controler.JTable_Search;
 import Controler.LuuFIleController;
+import Controler.MoFileController;
 import Model.DBConnection;
 import Model.User;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -115,6 +113,11 @@ public class NhapDiem extends javax.swing.JFrame {
         });
 
         btMoF.setText("Mở file");
+        btMoF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMoFActionPerformed(evt);
+            }
+        });
 
         btBack.setText("< Trở về");
         btBack.addActionListener(new java.awt.event.ActionListener() {
@@ -304,6 +307,7 @@ public class NhapDiem extends javax.swing.JFrame {
 
         // TODO add your handling code here:
 //           FrameGiangVien dk = new FrameGiangVien();
+           this.dispose();
 //            dk.setVisible(true);
 
     }//GEN-LAST:event_btBackActionPerformed
@@ -487,6 +491,16 @@ public class NhapDiem extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btLuuFActionPerformed
+
+    private void btMoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMoFActionPerformed
+        // TODO add your handling code here:
+        MoFileController controller=new MoFileController(txtMaKT.getText(),tblDiem);
+        try {
+            controller.readExcel();
+        } catch (IOException ex) {
+            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btMoFActionPerformed
 
     /**
      * @param args the command line arguments
