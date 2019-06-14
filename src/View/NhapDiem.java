@@ -9,6 +9,7 @@ import Controler.JTable_Search;
 import Controler.LuuFIleController;
 import Model.DBConnection;
 import Model.User;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,22 +31,12 @@ public class NhapDiem extends javax.swing.JFrame {
     /**
      * Creates new form NhapDiem
      */
-    public String magv;
+    public String magv;public String malop="";
     public NhapDiem(String magv) {
         initComponents();
-        try {
-            
-            this.magv=magv;
-            Connection conn=DBConnection.getConnection();
-            Statement stm=conn.createStatement();
-            String sql1="select * from lophoc where magv='"+magv+"'";
-            ResultSet rs1=stm.executeQuery(sql1);
-            while (rs1.next()) {                
-                cblop.addItem(rs1.getString("malophoc"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.setLocationRelativeTo(null);
+        this.magv=magv;
+        
     }
 
     private NhapDiem() {
@@ -53,7 +44,7 @@ public class NhapDiem extends javax.swing.JFrame {
             initComponents();
             
            
-                    
+
     }
 
     /**
@@ -77,7 +68,7 @@ public class NhapDiem extends javax.swing.JFrame {
         btTim = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtMaKT = new javax.swing.JTextField();
-        cblop = new javax.swing.JComboBox<>();
+        txtMalop = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -191,7 +182,7 @@ public class NhapDiem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMaKT, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                    .addComponent(cblop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtMalop))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -201,17 +192,17 @@ public class NhapDiem extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cblop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMalop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addComponent(btTim)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Điểm"));
@@ -276,14 +267,14 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -303,7 +294,7 @@ public class NhapDiem extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -384,15 +375,29 @@ public class NhapDiem extends javax.swing.JFrame {
         return usersList;
     }
     private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
-        // TODO add your handling code here:
 
-        ArrayList<User> users = ListUsers(cblop.getItemAt(1));
+        // TODO add your handling code here:
+        try {
+            boolean check=false;
+            
+            Connection conn=DBConnection.getConnection();
+            Statement stm=conn.createStatement();
+            String sql1="select * from lophoc where magv='"+magv+"'";
+            ResultSet rs1=stm.executeQuery(sql1);
+            while (rs1.next()) {                
+                if(rs1.getString("malophoc").equals(txtMalop.getText())) check=true;
+            }
+            rs1.close();stm.close();conn.close();
+            if (check==false) JOptionPane.showMessageDialog(null,"Mã lớp đã chọn không hợp lệ","Thông báo",JOptionPane.INFORMATION_MESSAGE);
+            else{
+                malop=txtMalop.getText();
+                ArrayList<User> users;
+        users = ListUsers(txtMalop.getText());
         DefaultTableModel model = new DefaultTableModel();
-        if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
         model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "C1", "C2", "C3", "Tổng điểm A"});
-        
+
         Object[] row = new Object[6];
-        
+
         for (int i = 0; i < users.size(); i++) {
             row[0] = users.get(i).getmssv();
             row[1] = users.get(i).getmalop();
@@ -403,24 +408,13 @@ public class NhapDiem extends javax.swing.JFrame {
             model.addRow(row);
 
         }
-        }
-        else
-        {
-                    model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "Tổng điểm A"});
-        
-        Object[] row = new Object[3];
-        
-        for (int i = 0; i < users.size(); i++) {
-            row[0] = users.get(i).getmssv();
-            row[1] = users.get(i).getmalop();
-
-            row[2] = users.get(i).gettongdiema3();
-            model.addRow(row);
-
-        }
-        }
-        
         tblDiem.setModel(model);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
 
 
     }//GEN-LAST:event_btTimActionPerformed
@@ -429,22 +423,12 @@ public class NhapDiem extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblDiem.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblDiem.getModel();
-        if (Integer.parseInt(txtMaKT.getText()) == 4 || Integer.parseInt(txtMaKT.getText()) == 2) {
         txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
+//        txtTen.setText(model.getValueAt(selectedRow, 1).toString());
         txtC1.setText(model.getValueAt(selectedRow, 2).toString());
         txtC2.setText(model.getValueAt(selectedRow, 3).toString());
         txtC3.setText(model.getValueAt(selectedRow, 4).toString());
         txtA.setText(model.getValueAt(selectedRow, 5).toString());
-        }
-        else
-        {
-        txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
-        txtC1.setText("NULL");
-        txtC2.setText("NULL");
-        txtC3.setText("NULL");
- 
-        txtA.setText(model.getValueAt(selectedRow, 2).toString());
-        }
     }//GEN-LAST:event_tblDiemMouseClicked
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
@@ -463,7 +447,17 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btLuuFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuFActionPerformed
         // TODO add your handling code here:
-        LuuFIleController controller=new LuuFIleController();
+        if ("".equals(malop)) {
+            JOptionPane.showMessageDialog(null,"Mã lớp đã chọn không hợp lệ","Thông báo",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            try {
+                LuuFIleController controller=new LuuFIleController(malop,txtMaKT.getText());
+                controller.WriteExcel();
+            } catch (IOException ex) {
+                Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btLuuFActionPerformed
 
     /**
@@ -507,7 +501,6 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JButton btLuuF;
     private javax.swing.JButton btMoF;
     private javax.swing.JButton btTim;
-    private javax.swing.JComboBox<String> cblop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -526,5 +519,6 @@ public class NhapDiem extends javax.swing.JFrame {
     private javax.swing.JTextField txtC3;
     private javax.swing.JTextField txtMSSV;
     private javax.swing.JTextField txtMaKT;
+    private javax.swing.JTextField txtMalop;
     // End of variables declaration//GEN-END:variables
 }
