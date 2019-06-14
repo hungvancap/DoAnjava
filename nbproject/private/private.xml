@@ -3,30 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Documents/DoAn/src/View/NhapDiem.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/ConnectForm.java</file>
-            <file>file:/D:/Documents/DoAn/src/Controler/LopsinhhoatController.java</file>
-            <file>file:/D:/Documents/DoAn/src/Controler/GiangVienController.java</file>
-            <file>file:/D:/Documents/DoAn/src/Controler/TaiKhoanController.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/Bieudo.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/Bangdiemlopsinhhoat.java</file>
-            <file>file:/D:/Documents/DoAn/src/Controler/JTable_Search.java</file>
-            <file>file:/D:/Documents/DoAn/src/Model/DBConnection.java</file>
-            <file>file:/D:/Documents/DoAn/src/Model/User.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/Bangdiemlophoc.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/LoginForm.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/FrameSinhVien.java</file>
-            <file>file:/D:/Documents/DoAn/src/View/FrameGiangVien.java</file>
-=======
-            <file>file:/D:/DoAnjava/src/Model/User.java</file>
             <file>file:/D:/DoAnjava/src/Controler/GiangVienController.java</file>
-            <file>file:/D:/DoAnjava/src/View/Bangdiemlophoc.java</file>
-            <file>file:/D:/DoAnjava/src/View/NhapDiem.java</file>
             <file>file:/D:/DoAnjava/src/Controler/LuuFIleController.java</file>
-            <file>file:/D:/DoAnjava/src/View/FrameGiangVien.java</file>
-            <file>file:/D:/DoAnjava/src/Controler/TaiKhoanController.java</file>
->>>>>>> 2327d87e6ce2a9858d6e3fffb25734b4a973c559
+            <file>file:/D:/DoAnjava/src/Controler/JTable_Search.java</file>
         </group>
     </open-files>
 </project-private>
