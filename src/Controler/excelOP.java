@@ -5,10 +5,13 @@
  */
 package Controler;
 
+import static com.sun.org.apache.xerces.internal.impl.XMLScanner.NameType.DOCTYPE;
+import static com.sun.org.apache.xml.internal.resolver.Catalog.DOCTYPE;
+
 /**
  *
  * @author LENOVO
  */
 public class excelOP {
-    
+
 }

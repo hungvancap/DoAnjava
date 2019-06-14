@@ -306,6 +306,7 @@ public class NhapDiem extends javax.swing.JFrame {
         // TODO add your handling code here:
 //           FrameGiangVien dk = new FrameGiangVien();
 //            dk.setVisible(true);
+this.dispose();
 
     }//GEN-LAST:event_btBackActionPerformed
 
@@ -474,17 +475,17 @@ public class NhapDiem extends javax.swing.JFrame {
 //        if (new JTable_Search().add(s,ma)) {
 //            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên " + (txtMSSV.getText()) + " thành công");
 //        }
-            String url="jdbc:mysql://localhost:3306/new_schema";
-            String user="root";
-            String password="12345";
-            try{
-                Connection myConn=DriverManager.getConnection(url, user, password);
-                Statement myStmt=myConn.createStatement();
-                String sql="insert into bangdiema"+txtMaKT.getText()+"(mssv,malop,diemcau1,diemcau2,diemcau3,tongdiema"+txtMaKT.getText()+") values('"+txtMSSV.getText()+"','"+txtMalop.getText()+"','"+txtC1.getText()+"','"+txtC2.getText()+"','"+txtC3.getText()+"','"+txtA.getText()+"')";
-                myStmt.executeUpdate(sql);
-            } catch (SQLException ex) {
-            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            String url="jdbc:mysql://localhost:3306/new_schema";
+//            String user="root";
+//            String password="12345";
+//            try{
+//                Connection myConn=DriverManager.getConnection(url, user, password);
+//                Statement myStmt=myConn.createStatement();
+//                String sql="insert into bangdiema"+txtMaKT.getText()+"(mssv,malop,diemcau1,diemcau2,diemcau3,tongdiema"+txtMaKT.getText()+") values('"+txtMSSV.getText()+"','"+txtMalop.getText()+"','"+txtC1.getText()+"','"+txtC2.getText()+"','"+txtC3.getText()+"','"+txtA.getText()+"')";
+//                myStmt.executeUpdate(sql);
+//            } catch (SQLException ex) {
+//            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_btLuuActionPerformed
 
