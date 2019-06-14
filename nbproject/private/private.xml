@@ -5,11 +5,12 @@
         <group>
             <file>file:/D:/DoAnjava/src/Controler/GiangVienController.java</file>
             <file>file:/D:/DoAnjava/src/Controler/MoFileController.java</file>
+            <file>file:/D:/DoAnjava/src/Model/DBConnection.java</file>
             <file>file:/D:/DoAnjava/src/View/NhapDiem.java</file>
+            <file>file:/D:/DoAnjava/src/Controler/LOController.java</file>
             <file>file:/D:/DoAnjava/src/Controler/LuuFIleController.java</file>
-            <file>file:/D:/DoAnjava/src/Controler/BangdiemController.java</file>
-            <file>file:/D:/DoAnjava/src/Controler/JTable_Search.java</file>
             <file>file:/D:/DoAnjava/src/Controler/TaiKhoanController.java</file>
+            <file>file:/D:/DoAnjava/src/View/FrameGiangVien.java</file>
         </group>
     </open-files>
 </project-private>

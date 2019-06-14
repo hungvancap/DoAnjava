@@ -39,8 +39,8 @@ public class MoFileController {
             File f=fc.getSelectedFile();
             FileInputStream fr=new FileInputStream(f);
             Workbook workbook = getWorkbook(fr,f.getPath());
-            List<Book> listBooks = MoFileController.readBooksFromExcelFile(f.getPath());
-	    System.out.println(listBooks);
+            
+	    
     }
 
     private Workbook getWorkbook(FileInputStream fr, String path) throws IOException {
