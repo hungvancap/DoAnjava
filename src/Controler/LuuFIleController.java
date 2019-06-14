@@ -54,10 +54,8 @@ public class LuuFIleController {
 //            FileOutputStream file=new FileOutputStream((File)fw);
             FileOutputStream file=new FileOutputStream(f,true);
             XSSFWorkbook workbook=new XSSFWorkbook();
-            XSSFSheet woFSheet_1=workbook.createSheet("Quá trình");
-            XSSFSheet woFSheet_2=workbook.createSheet("Giữa kì");
-            XSSFSheet woFSheet_3=workbook.createSheet("Thực hành");
-            XSSFSheet woFSheet_4=workbook.createSheet("Cuối kì");
+            XSSFSheet woFSheet_1=workbook.createSheet("Bangdiem");
+           
             XSSFRow row;
             XSSFCell cellA,cellB,cellC,cellD,cellE,cellF;
             if (Integer.parseInt(maKT)==1) {
@@ -67,7 +65,7 @@ public class LuuFIleController {
                             "and sv_lophoc.mssv=bangdiema1.mssv\n" +
                             "and sv_lophoc.malophoc='"+malop+"'";
                 ResultSet rs1=stm.executeQuery(sql1);
-                int i=1;
+                int i=0;
                 row= woFSheet_1.createRow((short)0);
                     cellA=row.createCell(0);
                     cellA.setCellValue("MSSV");
@@ -92,8 +90,8 @@ public class LuuFIleController {
                             "and sv_lophoc.mssv=bangdiema2.mssv\n" +
                             "and sv_lophoc.malophoc='"+malop+"'";
                 ResultSet rs2=stm.executeQuery(sql2);
-                int i=1;
-                row= woFSheet_2.createRow((short)0);
+                int i=0;
+                row= woFSheet_1.createRow((short)0);
                 cellA=row.createCell(0);
                 cellA.setCellValue("MSSV");
                 cellB=row.createCell(1);
@@ -106,7 +104,7 @@ public class LuuFIleController {
                 cellE.setCellValue("Tổng điểm");
                 while (rs2.next()) {                    
                     i++;
-                     row= woFSheet_2.createRow((short)i);
+                     row= woFSheet_1.createRow((short)i);
                     cellA=row.createCell(0);
                 cellA.setCellValue(rs2.getString("mssv"));
                 cellB=row.createCell(1);
@@ -127,8 +125,8 @@ public class LuuFIleController {
                             "and sv_lophoc.mssv=bangdiema3.mssv\n" +
                             "and sv_lophoc.malophoc='"+malop+"'";
                 ResultSet rs3=stm.executeQuery(sql3);
-                int i=1;
-                    row= woFSheet_3.createRow((short)0);
+                int i=0;
+                    row= woFSheet_1.createRow((short)0);
                     cellA=row.createCell(0);
                     cellA.setCellValue("MSSV");
                     cellB=row.createCell(1);
@@ -136,7 +134,7 @@ public class LuuFIleController {
                 while(rs3.next()){
                     
                     i++;
-                    row= woFSheet_3.createRow((short)i);
+                    row= woFSheet_1.createRow((short)i);
                     cellA=row.createCell(0);
                     cellA.setCellValue(rs3.getString("mssv"));
                     cellB=row.createCell(1);
@@ -145,14 +143,14 @@ public class LuuFIleController {
                 rs3.close();
             }
             else if (Integer.parseInt(maKT)==4) {
-                String sql4="select sv_lophoc.mssv,sv_lophoc.malophoc, bangdiema2.diemcau1,bangdiema2.diemcau2,bangdiema2.diemcau3,bangdiema2.tongdiema2\n" +
-                            "from sv_lophoc,bangdiema2\n" +
-                            "where sv_lophoc.malophoc=bangdiema2.malop\n" +
-                            "and sv_lophoc.mssv=bangdiema2.mssv\n" +
+                String sql4="select sv_lophoc.mssv,sv_lophoc.malophoc, bangdiema4.diemcau1,bangdiema4.diemcau2,bangdiema4.diemcau3,bangdiema4.tongdiema2\n" +
+                            "from sv_lophoc,bangdiema4\n" +
+                            "where sv_lophoc.malophoc=bangdiema4.malop\n" +
+                            "and sv_lophoc.mssv=bangdiema4.mssv\n" +
                             "and sv_lophoc.malophoc='"+malop+"'";
                 ResultSet rs4=stm.executeQuery(sql4);
-                int i=1;
-                row= woFSheet_4.createRow((short)0);
+                int i=0;
+                row= woFSheet_1.createRow((short)0);
                 cellA=row.createCell(0);
                 cellA.setCellValue("MSSV");
                 cellB=row.createCell(1);
@@ -165,7 +163,7 @@ public class LuuFIleController {
                 cellE.setCellValue("Tổng điểm");
                 while (rs4.next()) {                    
                     i++;
-                     row= woFSheet_4.createRow((short)i);
+                     row= woFSheet_1.createRow((short)i);
                     cellA=row.createCell(0);
                 cellA.setCellValue(rs4.getString("mssv"));
                 cellB=row.createCell(1);

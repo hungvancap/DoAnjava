@@ -29,7 +29,7 @@ public class NhapDiem extends javax.swing.JFrame {
     /**
      * Creates new form NhapDiem
      */
-    public String ma;
+    public String maKT;
     public String magv;public String malop="";
     public NhapDiem(String magv) {
         initComponents();
@@ -466,7 +466,15 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
         // TODO add your handling code here:
-        this.ma=txtMaKT.getText();
+        maKT=txtMaKT.getText();
+        DefaultTableModel model = new DefaultTableModel();
+        model=(DefaultTableModel) tblDiem.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                
+            }
+        }
+        
 //        User s = new User();
 //        
 //        s.setmssv((txtMSSV.getText()));
