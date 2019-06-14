@@ -29,6 +29,7 @@ public class NhapDiem extends javax.swing.JFrame {
     /**
      * Creates new form NhapDiem
      */
+    public String ma;
     public String magv;public String malop="";
     public NhapDiem(String magv) {
         initComponents();
@@ -465,16 +466,30 @@ public class NhapDiem extends javax.swing.JFrame {
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
         // TODO add your handling code here:
+        this.ma=txtMaKT.getText();
 //        User s = new User();
+//        
 //        s.setmssv((txtMSSV.getText()));
-//        s.setmalop(txtTen.getText());
+//        s.setmalop((txtMalop.getText()));
 //        s.setc1(Float.parseFloat(txtC1.getText()));
 //        s.setc2(Float.parseFloat(txtC2.getText()));
 //        s.setc3(Float.parseFloat(txtC3.getText()));
 //        s.seta(Float.parseFloat(txtA.getText()));
-//        if (new JTable_Search().add(s)) {
+//        if (new JTable_Search().add(s,ma)) {
 //            JOptionPane.showMessageDialog(rootPane, "Thêm sinh viên " + (txtMSSV.getText()) + " thành công");
 //        }
+            String url="jdbc:mysql://localhost:3306/new_schema";
+            String user="root";
+            String password="12345";
+            try{
+                Connection myConn=DriverManager.getConnection(url, user, password);
+                Statement myStmt=myConn.createStatement();
+                String sql="insert into bangdiema"+txtMaKT.getText()+"(mssv,malop,diemcau1,diemcau2,diemcau3,tongdiema"+txtMaKT.getText()+") values('"+txtMSSV.getText()+"','"+txtMalop.getText()+"','"+txtC1.getText()+"','"+txtC2.getText()+"','"+txtC3.getText()+"','"+txtA.getText()+"')";
+                myStmt.executeUpdate(sql);
+            } catch (SQLException ex) {
+            Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btLuuActionPerformed
 
     private void btLuuFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuFActionPerformed
@@ -528,7 +543,7 @@ public class NhapDiem extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NhapDiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

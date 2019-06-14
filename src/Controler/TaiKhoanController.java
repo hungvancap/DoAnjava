@@ -48,12 +48,9 @@ public class TaiKhoanController {
                         PreparedStatement ps2 = cons.prepareCall(sql2);
                         ResultSet rs1 = ps1.executeQuery();
                         ResultSet rs2 = ps2.executeQuery();
-//                        String magv = new String();
-//                        String pass = new String();
                         if (rs1.next()) {
                             String name=rs1.getString("hotengv");
-                            String ma=rs1.getString("magv");
-                            FrameGiangVien jfGiangVien = new FrameGiangVien(name,ma);
+                            FrameGiangVien jfGiangVien = new FrameGiangVien();
                             jfGiangVien.setLocationRelativeTo(null);
                             jfGiangVien.setVisible(true);
                             dialog.dispose();
@@ -61,7 +58,7 @@ public class TaiKhoanController {
                         } else if (rs2.next()) {
                             String name=rs2.getString("hotensv");
                             String mssv = rs2.getString("mssv");
-                            FrameSinhVien jfSinhVien = new FrameSinhVien(name,mssv);
+                            FrameSinhVien jfSinhVien = new FrameSinhVien(mssv);
                             jfSinhVien.setLocationRelativeTo(null);
                             jfSinhVien.setVisible(true);
                             dialog.dispose();

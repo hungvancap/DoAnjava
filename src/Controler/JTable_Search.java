@@ -59,14 +59,14 @@ public class JTable_Search  {
 //             password);
 //     return conn;
 // }
-    public boolean add(User s){
+    public boolean add(User s,String ma){
         try {
             conn = DBConnection.getConnection();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         
-        String sql = "INSERT INTO student(mssv, malop, diemcau1, diemcau2, diemcau3, tongdiema4) "
+        String sql = "INSERT INTO bangdiema"+ma+"(mssv, malop, diemcau1, diemcau2, diemcau3, tongdiema4) "
                 + "VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
