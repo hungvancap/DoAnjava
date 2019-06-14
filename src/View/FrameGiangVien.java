@@ -7,8 +7,15 @@
 package View;
 
 
+import Controler.GiController;
 import Controler.GiangVienController;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.HeadlessException;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,6 +28,9 @@ public class FrameGiangVien extends javax.swing.JFrame {
         initComponents();
     }
     public String magv; 
+    public double[] sumict;
+    public double[] sumgi;
+    public double[] tiledatgi;
     public FrameGiangVien(String name,String ma) throws HeadlessException {
         initComponents();
         magv=ma;
@@ -45,6 +55,13 @@ public class FrameGiangVien extends javax.swing.JFrame {
         jlb_ma = new javax.swing.JLabel();
         jlbname = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtMSSV = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtMamon = new javax.swing.JTextField();
+        btOK = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTK = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jbtout = new javax.swing.JButton();
         jbtThongke = new javax.swing.JButton();
@@ -101,15 +118,64 @@ public class FrameGiangVien extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        jpnView.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setText("MSSV:");
+        jLabel3.setToolTipText("");
+
+        jLabel4.setText("Mã môn:");
+
+        btOK.setText("OK");
+        btOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btOKActionPerformed(evt);
+            }
+        });
+
+        tblTK.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane2.setViewportView(tblTK);
+
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGroup(jpnViewLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btOK, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpnViewLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMamon, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jpnViewLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtMamon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btOK)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -138,6 +204,11 @@ public class FrameGiangVien extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jbtThongkeMouseExited(evt);
+            }
+        });
+        jbtThongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtThongkeActionPerformed(evt);
             }
         });
 
@@ -225,12 +296,12 @@ public class FrameGiangVien extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jpnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -301,6 +372,16 @@ public class FrameGiangVien extends javax.swing.JFrame {
         txtTip.setText("");
     }//GEN-LAST:event_jbtoutMouseExited
 
+    private void jbtThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtThongkeActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jbtThongkeActionPerformed
+
+    private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btOKActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -333,16 +414,23 @@ public class FrameGiangVien extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrameGiangVien().setVisible(true);
+                
             }
         });
+
+ 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtThongke;
     private javax.swing.JButton jbtnhap;
     private javax.swing.JButton jbtout;
@@ -350,6 +438,9 @@ public class FrameGiangVien extends javax.swing.JFrame {
     private javax.swing.JLabel jlb_ma;
     private javax.swing.JLabel jlbname;
     private javax.swing.JPanel jpnView;
+    private javax.swing.JTable tblTK;
+    private javax.swing.JTextField txtMSSV;
+    private javax.swing.JTextField txtMamon;
     private javax.swing.JTextArea txtTip;
     // End of variables declaration//GEN-END:variables
 
