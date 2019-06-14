@@ -267,14 +267,14 @@ public class NhapDiem extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMSSV, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -317,7 +317,7 @@ public class NhapDiem extends javax.swing.JFrame {
         Connection con = null;
 
         try {
-            con=DBConnection.getConnection();
+             con = DriverManager.getConnection("jdbc:mysql://localhost/new_schema", "root", "12345");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -394,6 +394,8 @@ public class NhapDiem extends javax.swing.JFrame {
                 ArrayList<User> users;
         users = ListUsers(txtMalop.getText());
         DefaultTableModel model = new DefaultTableModel();
+        if(Integer.parseInt(txtMaKT.getText())==4||Integer.parseInt(txtMaKT.getText())==2)
+        {
         model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "C1", "C2", "C3", "Tổng điểm A"});
 
         Object[] row = new Object[6];
@@ -410,6 +412,22 @@ public class NhapDiem extends javax.swing.JFrame {
         }
         tblDiem.setModel(model);
             }
+        else
+        {
+                    model.setColumnIdentifiers(new Object[]{"MSSV", "Mã lớp", "Tổng điểm A"});
+
+        Object[] row = new Object[3];
+
+        for (int i = 0; i < users.size(); i++) {
+            row[0] = users.get(i).getmssv();
+            row[1] = users.get(i).getmalop();
+            row[2] = users.get(i).gettongdiema3();
+            model.addRow(row);
+
+        }
+        tblDiem.setModel(model);
+        }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(NhapDiem.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -423,12 +441,22 @@ public class NhapDiem extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = tblDiem.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblDiem.getModel();
+        if(Integer.parseInt(txtMaKT.getText())==4||Integer.parseInt(txtMaKT.getText())==2)
+        {
         txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
-//        txtTen.setText(model.getValueAt(selectedRow, 1).toString());
         txtC1.setText(model.getValueAt(selectedRow, 2).toString());
         txtC2.setText(model.getValueAt(selectedRow, 3).toString());
         txtC3.setText(model.getValueAt(selectedRow, 4).toString());
         txtA.setText(model.getValueAt(selectedRow, 5).toString());
+        }
+        else
+        {
+        txtMSSV.setText(model.getValueAt(selectedRow, 0).toString());
+        txtC1.setText("null");
+        txtC2.setText("null");
+        txtC3.setText("null");
+        txtA.setText(model.getValueAt(selectedRow, 2).toString());
+        }
     }//GEN-LAST:event_tblDiemMouseClicked
 
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
