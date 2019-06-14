@@ -4,15 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/DoAnjava/src/Model/User.java</file>
-            <file>file:/D:/DoAnjava/src/View/Bieudo.java</file>
             <file>file:/D:/DoAnjava/src/Controler/GiangVienController.java</file>
             <file>file:/D:/DoAnjava/src/View/Bangdiemlophoc.java</file>
-            <file>file:/D:/DoAnjava/src/Model/DBConnection.java</file>
             <file>file:/D:/DoAnjava/src/View/NhapDiem.java</file>
-            <file>file:/D:/DoAnjava/src/View/FrameSinhVien.java</file>
-            <file>file:/D:/DoAnjava/src/Controler/BangdiemController.java</file>
-            <file>file:/D:/DoAnjava/src/Controler/TaiKhoanController.java</file>
+            <file>file:/D:/DoAnjava/src/Controler/LuuFIleController.java</file>
             <file>file:/D:/DoAnjava/src/View/FrameGiangVien.java</file>
+            <file>file:/D:/DoAnjava/src/Controler/TaiKhoanController.java</file>
         </group>
     </open-files>
 </project-private>

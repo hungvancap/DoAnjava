@@ -33,7 +33,7 @@ public class User {
          //To change body of generated methods, choose Tools | Templates.
         this.mssv = mssv;
         this.malop = malop;
-        this.tongdiema3 = tongdiema3;
+        this.tongdiema4 = tongdiema4;
     }
 
 //    public User() {
@@ -84,8 +84,6 @@ public class User {
                 public void seta(float ID) {
         this.tongdiema4 = ID;
     }
-                public void seta3(float ID) {
-        this.tongdiema3 = ID;
-    }
+
 
 }
